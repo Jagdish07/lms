@@ -48,6 +48,17 @@ defined('FOPEN_READ_WRITE_CREATE')              OR define('FOPEN_READ_WRITE_CREA
 defined('FOPEN_WRITE_CREATE_STRICT')            OR define('FOPEN_WRITE_CREATE_STRICT', 'xb');
 defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
+
+defined('CSS_PATH')       OR define('CSS_PATH', 'http://localhost/projects/lms/public/');
+defined('JS_PATH')       OR define('JS_PATH', 'http://localhost/projects/lms/public/');
+defined('IMAGE')       OR define('IMAGE', 'http://localhost/projects/events/lms/public/images');
+
+//frontend style path set
+//~ defined('F_IMAGE_PATH')       OR define('F_IMAGE_PATH', 'http://localhost/projects/lms/asserts/frontend/images/');
+//~ defined('F_CSS_PATH')       OR define('F_CSS_PATH', 'http://localhost/projects/lms/asserts/frontend/css/');
+//~ defined('F_JS_PATH')       OR define('F_JS_PATH', 'http://localhost/projects/lms/asserts/frontend/js/');
+
+
 /*
 |--------------------------------------------------------------------------
 | Exit Status Codes
