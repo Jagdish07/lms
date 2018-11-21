@@ -1,5 +1,6 @@
  <div class="content-page">
             <!-- Start content -->
+     <form>
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">

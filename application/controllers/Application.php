@@ -42,7 +42,7 @@ class Application extends CI_Controller {
 
         $data['prospect_data'] = $this->AdminModel->getData('prospect');
         //echo '<pre>';print_r($data['prospect_data']); die;
-        $this->load->view('prospects');
+        $this->load->view('prospects' , $data);
         $this->load->view('layout/footer');
     }
 
@@ -76,6 +76,12 @@ class Application extends CI_Controller {
     }
     public function agencies() {
         $data['agencies_data'] = $this->AdminModel->getData('agency');
+        $agency =  array();
+        foreach ($data['agencies_data'] as  $records) {
+            $agency[$records['id']] = $records;
+
+        }
+        $data['agency'] =  $agency;
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('agency',$data);    
@@ -88,19 +94,53 @@ class Application extends CI_Controller {
              $this->db->insert('agency',$_REQUEST);
             $this->agencies();
             return;
-        } 
+        }
+    }
 
+    public function edit_agencies() {
+
+
+        if(isset($_POST['registration_no'])) {
+
+            $table = 'agency';
+            $where =  array('id'=> $_REQUEST['id']);
+
+            unset($_REQUEST['id']);
+
+            $data =  $_REQUEST;
+            $this->AdminModel->updateData($where,$data,$table);
+            $this->agencies();
+            return;
+        }
+    }
+
+
+    public function  update_agency(){
+
+        $userrow =  urldecode($_REQUEST['obj']);
+        $data['json_data'] =  json_decode($userrow);
+
+        $abc =   $this->load->view('update', $data);
 
     }
+
 
     public function deleteRow() {
 
-       echo $this->AdminModel->row_delete($_REQUEST['id'], 'agency');
+        $this->AdminModel->row_delete($_REQUEST['id'], $_REQUEST['table']);
     }
 
     public function agent() {
-
+        $agent  =  array();
         $data['agencies_data'] = $this->AdminModel->getData('agency');
+
+        $data['agent_data'] = $this->AdminModel->getData('agent');
+
+        foreach ($data['agent_data'] as $agents) {
+
+            $agent[$agents['id']] =   $agents;
+        }
+        $data['agents'] =$agent;
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
         $this->load->view('agent',$data);    
@@ -108,11 +148,23 @@ class Application extends CI_Controller {
     }
 
     public function add_agent()  {
-        if(isset($_POST['agency'])) { 
+
+        if(isset($_POST['agency_id'])) {
              $this->db->insert('agent',$_REQUEST);
-            $this->agencies();
+            $this->agent();
             return;
         } 
+    }
+
+
+    public  function  update_agent() {
+
+
+        $userrow =  urldecode($_REQUEST['obj']);
+        $data['json_data'] =  json_decode($userrow);
+
+        $abc =   $this->load->view('agent_update', $data);
+
     }
 
 }

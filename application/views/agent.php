@@ -20,7 +20,7 @@
 
                         <label class="control-label"><strong> Agency<span style="color: red;">*</span></strong></label>
 
-                            <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                            <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="agency_id">
 
                                 <option value="">Select</option>
                                     <?php foreach ($agencies_data as $key => $value) { ?>
@@ -95,13 +95,119 @@
             </div>
            </div>
           </div>
-          <div class="modal-footer">
+
+              <div class="modal-footer">
             <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cancel</button>
             <button type="submit" class="btn btn-primary btn-lg" value="Save">Save</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
+ <div class="modal fade" id="update_google" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header tran-heading text-center ">
+                 <div class="col-md-12 text-center">
+                     <h5 class="modal-title" id="exampleModalLabel">Update Agent</h5>
+                 </div>
+                 <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+             </div>
+             <hr>
+             <div class="modal-body">
+                 <div class="container">
+                     <div class="row">
+                         <hr>
+                         <div class="col-md-4">
+                             <div class="form-group">
+
+                                 <label class="control-label"><strong> Agency<span style="color: red;">*</span></strong></label>
+
+                                 <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+
+                                     <option>Select</option>
+
+                                     <!-- <optgroup label="Alaskan/Hawaiian Time Zone"> -->
+
+                                     <option value="AK">option</option>
+
+                                     <option value="HI">option</option>
+
+
+
+                                 </select>
+
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+
+                                 <label class="control-label"><strong> Position<span style="color: red;">*</span></strong></label>
+
+                                 <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+
+                                     <option>Select</option>
+
+                                     <!-- <optgroup label="Alaskan/Hawaiian Time Zone"> -->
+
+                                     <option value="AK">option</option>
+
+                                     <option value="HI">option</option>
+
+
+
+                                 </select>
+
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>Name<span style="color: red;">*</span></label>
+                                 <input type="Email" class="form-control " required="" placeholder="">
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>Email<span style="color: red;">*</span></label>
+                                 <input type="Email" class="form-control " required="" placeholder="">
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>Phone<span style="color: red;">*</span></label>
+                                 <input type="Email" class="form-control " required="" placeholder="">
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>Secondary Phone</label>
+                                 <input type="Email" class="form-control " required="" placeholder="">
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>Commission Rate (%)</label>
+                                 <input type="Email" class="form-control " required="" placeholder="0">
+                             </div>
+                         </div>
+                         <div class="col-md-4">
+                             <div class="form-group">
+                                 <label>Commission </label>
+                                 <input type="Email" class="form-control " required="" placeholder="0">
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>
+                 <button type="button" class="btn btn-lg btn-primary">Save</button>
+             </div>
+         </div>
+     </div>
+ </div>
 
  <div class="content-page">
 
@@ -285,64 +391,29 @@
                                             </thead>
 
                                             <tbody>
+                                        <?php foreach ($agent_data as $value) {
 
-                                                <tr>
+                                            $id =  $value['id'];
 
-                                                    <th scope="row">1</th>
+                                            $a =   urlencode( json_encode($agents[$id]) );
+                                            ?>
+                                                <tr id="current_row<?php echo $value['id']; ?>">
 
-                                                    <td>Rocky</td>
+                                                    <th scope="row"><?php echo $value['id']; ?></th>
 
-                                                    <td>Telekom Malaysia</td>
+                                                    <td><?php echo $value['name']; ?></td>
+
+                                                    <td><?php echo $value['email']; ?></td>
 
                                                     <!-- <td>Active</td> -->
 
-                                                    <td class="text-center"><a href="#" data-toggle="modal" data-target="#update_google" ><span><i class="mdi mdi-table-edit" style="font-size:29px;"></i></span></a>
-                                                    <a href="#"  > <span><i  class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span>
+                                                    <td class="text-center"><a href="javascript:void(0)" onclick="update('<?php echo $a; ?>')" data-toggle="modal" data-target="#update_google" ><span><i class="mdi mdi-table-edit" style="font-size:29px;"></i></span></a>
+                                                    <a href="javascript:void(0)" onclick="deleteRow(<?php echo $value['id']; ?>, 'agent')" > <span><i  class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span>
                                                     </td>
 
                                                 </tr>
+                                        <?php  } ?>
 
-                                            <tr>
-
-                                                <th scope="row">2</th>
-
-                                                <td>Rocky</td>
-
-                                                    <td>Telekom Malaysia</td>
-
-                                                    <td class="text-center"><a href="#" data-toggle="modal" data-target="#update_google" ><span><i class="mdi mdi-table-edit" style="font-size:29px;"></i></span></a>
-                                                    <a href=""> <span><i class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span></a>
-                                                    </td>
-
-                                            </tr>
-
-                                            <tr>
-
-                                                <th scope="row">3</th>
-
-                                                <td>Rocky</td>
-
-                                                    <td>Telekom Malaysia</td>
-
-                                                    <td class="text-center"><a href="#" data-toggle="modal" data-target="#update_google" ><span><i class="mdi mdi-table-edit" style="font-size:29px;"></i></span></a>
-                                                    <a href=""> <span><i class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span></a>
-                                                    </td>
-
-                                            </tr>
-
-                                            <tr>
-
-                                                <th scope="row">4</th>
-
-                                               <td>Rocky</td>
-
-                                                    <td>Telekom Malaysia</td>
-
-                                                    <td class="text-center"><a href="#" data-toggle="modal" data-target="#update_google" ><span><i class="mdi mdi-table-edit" style="font-size:29px;"></i></span></a>
-                                                    <a href=""> <span><i class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span></a>
-                                                    </td>
-
-                                            </tr>
 
                                             </tbody>
 
@@ -368,4 +439,45 @@
 
              <footer class="footer">© 2018 LMS- <span class="d-none d-sm-inline-block"><i class="mdi mdi-heart text-danger"></i> </span>.</footer>
 
-       
+ <script type="text/javascript">
+
+     function deleteRow(id,table) {
+         var url  = '<?php echo  base_url();?>';
+
+         var x=confirm("Are you sure to delete record?")
+         if (x) {
+             $.ajax({
+                 data: { 'id' : id,'table':table},
+                 type: "post",
+                 url: url + "index.php/Application/deleteRow",
+                 success: function(data){
+                     $('#current_row'+id).remove();
+                 }
+             });
+             return true;
+         } else {
+             return false;
+         }
+
+
+     }
+
+     function update(obj) {
+
+         var url  = '<?php echo  base_url();?>';
+
+         $.ajax({
+             data: { 'obj' : obj},
+             type: "post",
+             url: url + "index.php/Application/update_agent",
+             success: function(data){
+                 alert(data);
+                 $('#update_google').html(data);
+             }
+         });
+
+
+     }
+
+
+ </script>>

@@ -264,7 +264,7 @@
                                         </div>
                                            <div class="add_more">
                                              <button type="button" class="btn btn-info waves-effect waves-light">Export</button>
-                                            <a href="add_prospect.html">
+                                            <a href="<?php echo base_url().'index.php/application/add_prospects'; ?>">
 
                                                 <button type="button" class="btn btn-dark waves-effect waves-light">Add New Prospect</button>
                                             </a>
@@ -273,6 +273,8 @@
                                         <hr>
                                         <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                             <thead class="black white-text">
+
+
                                                 <tr>
                                                 <th>No</th>
                                                     <th class="th-sm">Name
@@ -300,21 +302,24 @@
                                                         <i class="fa fa-sort float-right" aria-hidden="true"></i>
                                                     </th>
                                                 </tr>
+
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td><span style="font-weight: 600; color: #eb2129;">Tiger Nixon</span> <br>Phone no: 123456789</td>
-                                                    <td>Identification certificate:<br><span style="font-weight: 600; color: #eb2129;">123456789</span></td>
-                                                    <td>2019/2</td>
-                                                    <td>Lorem Ipsum is simply dummy text of the<br> printing and typesetting industry.</td>
+                                            <?php foreach($prospect_data  as $value) { ?>
+                                                <tr id="current_row<?php echo $value['id']; ?>">
+                                                    <th scope="row"><?php echo $value['id'];  ?></th>
+                                                    <td><span style="font-weight: 600; color: #eb2129;"><?php echo $value['name'];  ?></span> <br>Phone no: <?php echo $value['name'];  ?></td>
+                                                    <td>Identification certificate:<br><span style="font-weight: 600; color: #eb2129;"><?php echo $value['id_no'];  ?></span></td>
+                                                    <td><?php echo $value['Intake'];  ?></td>
+                                                    <td><?php echo $value['p1_program'];  ?><br><?php echo $value['p2_program'];  ?></td>
                                                     <td>Leads</td>
-                                                    <td>25/04/2011</td>  
+                                                    <td><?php  echo $value['created_at']; ?></td>
                                                     <td>27/04/1994</td> 
                                                     <td><a href=""><span><i class="mdi mdi-account-box" style="font-size:29px;" ></i></span></a>
-                                                    <a href=""> <span><i class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span></a>
+                                                    <a href="javascript:void(0)" onclick="deleteRow(<?php echo $value['id']; ?>, 'prospect')" > <span><i class="mdi mdi-delete-forever" style="font-size:30px; color: #eb2129;"></i></span></a>
                                                     </td>
                                                 </tr>
+                                            <?php } ?>
                                           
 
                                             </tbody>
@@ -329,4 +334,28 @@
             </div>
             <!-- content -->
              <footer class="footer">© 2018 LMS- <span class="d-none d-sm-inline-block"><i class="mdi mdi-heart text-danger"></i> </span>.</footer>
-    
+   <script type="text/javascript">
+
+       function deleteRow(id,table) {
+           var url  = '<?php echo  base_url();?>';
+
+           var x=confirm("Are you sure to delete record?")
+           if (x) {
+               $.ajax({
+                   data: { 'id' : id,'table':table},
+                   type: "post",
+                   url: url + "index.php/Application/deleteRow",
+                   success: function(data){
+                       $('#current_row'+id).remove();
+                   }
+               });
+               return true;
+           } else {
+               return false;
+           }
+
+
+       }
+
+
+   </script>

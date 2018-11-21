@@ -49,9 +49,9 @@ defined('FOPEN_WRITE_CREATE_STRICT')            OR define('FOPEN_WRITE_CREATE_ST
 defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
 
-defined('CSS_PATH')       OR define('CSS_PATH', 'http://localhost/lms/public/');
-defined('JS_PATH')       OR define('JS_PATH', 'http://localhost/lms/public/');
-defined('IMAGE')       OR define('IMAGE', 'http://localhost/events/lms/public/images');
+defined('CSS_PATH')       OR define('CSS_PATH', 'http://localhost/projects/lms/public/');
+defined('JS_PATH')       OR define('JS_PATH', 'http://localhost/projects/lms/public/');
+defined('IMAGE')       OR define('IMAGE', 'http://localhost/events/projects/lms/public/images');
 
 //frontend style path set
 //~ defined('F_IMAGE_PATH')       OR define('F_IMAGE_PATH', 'http://localhost/projects/lms/asserts/frontend/images/');

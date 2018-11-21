@@ -17,6 +17,8 @@
 <script src="<?php echo JS_PATH; ?>plugins/raphael/raphael-min.js"></script>
 <script src="<?php echo JS_PATH; ?>pages/dashboard.js"></script>
 <!-- App js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
 <script src="<?php echo JS_PATH; ?>js/app.js"></script>
 </body>
 </html>
