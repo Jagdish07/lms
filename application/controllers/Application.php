@@ -167,4 +167,22 @@ class Application extends CI_Controller {
 
     }
 
+    public function edit_agent() {
+
+        echo '<pre>'; print_r($_REQUEST); die;
+        if(isset($_POST['registration_no'])) {
+
+            $table = 'agent';
+            $where =  array('id'=> $_REQUEST['id']);
+
+            unset($_REQUEST['id']);
+
+            $data =  $_REQUEST;
+            $this->AdminModel->updateData($where,$data,$table);
+            $this->agencies();
+            return;
+        }
+    }
+
+
 }
