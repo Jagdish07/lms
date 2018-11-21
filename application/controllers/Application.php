@@ -22,7 +22,7 @@ class Application extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library(array('form_validation'));
-        $this->load->helper('form','url');
+        $this->load->helper(array('form','url'));
         $this->load->model('AdminModel');	// loads admin model
 
     }
@@ -32,47 +32,87 @@ class Application extends CI_Controller {
 		$this->load->view('layout/sidebar');
 		$this->load->view('welcome_message');
 		$this->load->view('layout/footer');
-		if(isset($_POST['submit'])) {
-
-            $this->form_validation->set_rules('email', 'email', 'trim|required|is_unique[users.email]');
-            if ($this->form_validation->run() === FALSE) {
-                $this->index();
-                return;
-            } else  {
-
-                $session_data=array(
-                    'name'=>$this->input->post('first_name') . ' '. $this->input->post('last_name'),
-                    'email'=>$this->input->post('email'),
-                    'source'=>'website',
-                    'sess_logged_in'=>1
-                );
-                $this->db->insert('users',$session_data);
-                $this->session->set_userdata($session_data);
-
-            }
-
-        }
+		
 
 	}
 
+    public function prospects() {
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+
+        $data['prospect_data'] = $this->AdminModel->getData('prospect');
+        //echo '<pre>';print_r($data['prospect_data']); die;
+        $this->load->view('prospects');
+        $this->load->view('layout/footer');
+    }
+
+
+    public function add_prospects() {
+
+         //echo '<pre>'; print_r($_REQUEST);
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        if(isset($_POST['submit'])) {
+            unset($_REQUEST['submit']);
+            $this->db->insert('prospect',$_REQUEST);
+             $this->prospects();
+            return;
+        } else {
+            $this->load->view('add_prospects');
+
+        }
+        $this->load->view('layout/footer');
+    }
+
+
 	public function follw() {
-        die('follow ');
+      $data['follw_data'] = $this->AdminModel->getData('follow_up');
+
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
-        $this->load->view('follow');
+        $this->load->view('follow_up', $data);
         $this->load->view('layout/footer');
 
     }
-    public function agencies() { die('rere');
+    public function agencies() {
+        $data['agencies_data'] = $this->AdminModel->getData('agency');
         $this->load->view('layout/header');
         $this->load->view('layout/sidebar');
-        $this->load->view('agencies');
+        $this->load->view('agency',$data);    
         $this->load->view('layout/footer');
 
 
     }
+    public function add_agencies() {
+       if(isset($_POST['registration_no'])) { 
+             $this->db->insert('agency',$_REQUEST);
+            $this->agencies();
+            return;
+        } 
 
 
+    }
 
+    public function deleteRow() {
+
+       echo $this->AdminModel->row_delete($_REQUEST['id'], 'agency');
+    }
+
+    public function agent() {
+
+        $data['agencies_data'] = $this->AdminModel->getData('agency');
+        $this->load->view('layout/header');
+        $this->load->view('layout/sidebar');
+        $this->load->view('agent',$data);    
+        $this->load->view('layout/footer');
+    }
+
+    public function add_agent()  {
+        if(isset($_POST['agency'])) { 
+             $this->db->insert('agent',$_REQUEST);
+            $this->agencies();
+            return;
+        } 
+    }
 
 }

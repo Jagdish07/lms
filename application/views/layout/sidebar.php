@@ -12,9 +12,9 @@
                 <li><a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-briefcase-check"></i><span> Marketing <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span></span></a>
                     <ul class="submenu">
                         <li><a href="Prospects.html">Prospects</a></li>
-                        <li><a href="<?php echo base_url();  ?>">Applications</a></li>
-                        <li><a href="<?php echo  base_url(); ?>follw">Follow-up History</a></li>
-                        <li><a href="<?php echo  base_url(); ?>agencies">Agencies</a></li>
+                        <li><a href="">Applications</a></li>
+                        <li><a href="follw">Follow-up History</a></li>
+                        <li><a href="agencies">Agencies</a></li>
                         <li><a href="javascript:void(0);">Assign Prospects</a></li>
                         <li><a href="javascript:void(0);">Agents</a></li>
                         <li><a href="javascript:void(0);">Materials</a></li>

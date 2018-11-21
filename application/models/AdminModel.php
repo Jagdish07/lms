@@ -23,7 +23,7 @@ class AdminModel extends CI_Model
 		return $update;
    }
 		   
-   	function getData($table,$where){
+   	function getData($table,$where = array()){
 	   $this->db->select('*');
 	   $this->db->from($table);				   
 	   
@@ -41,6 +41,13 @@ class AdminModel extends CI_Model
 	   {
 		   return array(); 
 	   }	
+	}
+
+	function row_delete($id,$tablename)
+	{
+	   $this->db->where('id', $id);
+	   $this->db->delete($tablename); 
+	   return '1';
 	}
 		
 					
