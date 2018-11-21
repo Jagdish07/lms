@@ -1,4 +1,5 @@
-<form class="modal-dialog modal-lg" role="document">
+<div class="modal-dialog modal-lg" role="document">
+    <form action="<?php echo base_url(); ?>index.php/application/update_agent" >
     <div class="modal-content">
         <div class="modal-header tran-heading text-center ">
             <div class="col-md-12 text-center">
@@ -24,9 +25,9 @@
 
                                 <!-- <optgroup label="Alaskan/Hawaiian Time Zone"> -->
 
-                                <option value="AK">option</option>
+                                <option value="AK" <?php echo ($json_data->agency_id=='AK')?'selected':'';  ?>>option</option>
 
-                                <option value="HI">option</option>
+                                <option value="HI" <?php echo ($json_data->agency_id=='HI')?'selected':'';  ?>>option</option>
 
 
 
@@ -45,9 +46,8 @@
 
                                 <!-- <optgroup label="Alaskan/Hawaiian Time Zone"> -->
 
-                                <option value="AK">option</option>
+                                <option value="AK" <?php echo ($json_data->position=='AK')?'selected':'';  ?>>option</option>
 
-                                <option value="HI">option</option>
 
 
 
@@ -76,19 +76,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Secondary Phone</label>
-                            <input type="text" class="form-control " required="" placeholder="" value="<?php echo $json_data->secondary_phone;  ?>">
+                            <input type="text" class="form-control "  placeholder="" value="<?php echo $json_data->secondary_phone;  ?>">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Commission Rate (%)</label>
-                            <input type="text" class="form-control " required="" placeholder="0" value="<?php echo $json_data->commission_rate;  ?>">
+                            <input type="text" class="form-control "  placeholder="0" value="<?php echo $json_data->commission_rate;  ?>">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Commission </label>
-                            <input type="text" class="form-control " required="" placeholder="0" value="<?php echo $json_data->commission;  ?>">
+                            <input type="text" class="form-control "  placeholder="0" value="<?php echo $json_data->commission;  ?>">
                         </div>
                     </div>
                 </div>
@@ -99,5 +99,5 @@
             <button type="submit" class="btn btn-lg btn-primary">Save</button>
         </div>
     </div>
-</form>
+    </form>
 </div>
