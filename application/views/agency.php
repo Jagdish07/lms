@@ -113,114 +113,7 @@
     </div>
 
 <div class="modal fade" id="update_google" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<!--    <div class="modal-dialog modal-lg" role="document">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header tran-heading text-center ">-->
-<!--                <div class="col-md-12 text-center">-->
-<!--                    <h5 class="modal-title" id="exampleModalLabel">Update Google</h5>-->
-<!--                </div>-->
-<!--                <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                   <span aria-hidden="true">&times;</span>-->
-<!--                 </button> -->-->
-<!--            </div>-->
-<!--            <hr>-->
-<!--            <div class="modal-body">-->
-<!--                <div class="container">-->
-<!--                    <div class="row">-->
-<!--                        <hr>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Registration No</label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Name<span style="color: red;">*</span></label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Phone<span style="color: red;">*</span></label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Secondary Phone</label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Commission Rate (%)</label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="0">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Commission </label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="0">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Address Line 1<span style="color: red;">*</span> </label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="0">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Address Line 2 </label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="0">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>City<span style="color: red;">*</span> </label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="0">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label class="control-label"><strong>City <span style="color: red;">*</span></strong></label>-->
-<!--                                <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">-->
-<!--                                    <option>Select</option>-->
-<!--                                    <!-- <optgroup label="Alaskan/Hawaiian Time Zone"> -->-->
-<!--                                    <option value="AK">option</option>-->
-<!--                                    <option value="HI">option</option>-->
-<!---->
-<!--                                </select>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label class="control-label"><strong>State <span style="color: red;">*</span></strong></label>-->
-<!--                                <select class="form-control select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">-->
-<!--                                    <option>Select</option>-->
-<!--                                    <!-- <optgroup label="Alaskan/Hawaiian Time Zone"> -->-->
-<!--                                    <option value="AK">option</option>-->
-<!--                                    <option value="HI">option</option>-->
-<!---->
-<!--                                </select>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>PostCode<span style="color: red;">*</span> </label>-->
-<!--                                <input type="Email" class="form-control " required="" placeholder="">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>-->
-<!--                <button type="button" class="btn btn-lg btn-primary">Save</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+
 </div>
 
 
@@ -267,16 +160,17 @@
                                     <div style="clear:both"></div>
 
                                      <div class="search col-md-12" style="padding: 0px;">
-
+                                        <form action="<?php echo base_url(); ?>index.php/application/agencies" method="POST">
                                                     <div class="form-group">
 
                                                         <label>Search</label>
 
-                                                        <input type="text" class="form-control s" required="" placeholder="Filter by Agency Name"> 
+                                                        <input type="text"  name="agency_name" class="form-control s"  placeholder="Filter by Agency Name">
 
-                                                        <span class="serch_icon"><button class="btn btn-dark" type="button">Search</button></span>
+                                                        <span class="serch_icon"><input type="submit" name="search_btn" value="Search" class="btn btn-dark"></span>
 
                                                      </div>
+                                        </form>
 
                                                 </div>
 
@@ -329,6 +223,8 @@
                                         </div>
 
                                     </div>
+
+
                                     <div class="button col-md-12">
 
                                             <a class="btn btn-primary" gradient="peach type=" button"="" data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">

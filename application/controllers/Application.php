@@ -75,6 +75,12 @@ class Application extends CI_Controller {
 
     }
     public function agencies() {
+
+        if(isset($_POST['search_btn'])) {
+echo '<pre>'; print_r($_REQUEST); die;
+
+        }
+
         $data['agencies_data'] = $this->AdminModel->getData('agency');
         $agency =  array();
         foreach ($data['agencies_data'] as  $records) {

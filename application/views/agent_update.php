@@ -48,9 +48,6 @@
 
                                 <option value="AK" <?php echo ($json_data->position=='AK')?'selected':'';  ?>>option</option>
 
-
-
-
                             </select>
 
                         </div>
